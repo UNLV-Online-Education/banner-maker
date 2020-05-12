@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Banner Maker</title>
+    <meta name="description" content="UNLV Office of Online Education" />
+    <meta name="author" content="SitePoint" />
+
+    <link rel="stylesheet" href="css/bulma.css?v=1.0" />
+    <link rel="stylesheet" href="css/mystyles.css?v=1.0" />
+  </head>
+
+  <body>
+    <div class="container">
+      <section class="section">
+        <h1 class="title is-1">Make Course Banners</h1>
+        <p class="is-3">
+          Use this handy tool to generate banners you can copy and paste into
+          your Canvas course.
+        </p>
+      </section>
+      <section class="section">
+        <h2 class="title is-2">Enter Course Number and Title</h2>
+        <form id="my-form">
+          <div class="field">
+            <label class="label">Course Number</label>
+            <div class="control">
+              <input
+                id="courseName"
+                class="input"
+                type="text"
+                placeholder="ABC 123"
+              />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Course Title</label>
+            <div class="control">
+              <input
+                id="courseTitle"
+                class="input"
+                type="text"
+                placeholder="Course Name Goes Here"
+              />
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <button type="submit" class="button is-primary">
+                Create Banner Set
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+      <section id="finishedBanners" class="section">
+        <h2 class="title is-2">Custom Banners</h2>
+        <canvas
+          class="is-hidden"
+          width="1100px"
+          height="300px"
+          id="mainBanner"
+        ></canvas>
+        <canvas
+          class="is-hidden"
+          width="1100px"
+          height="150"
+          id="moduleBanner"
+        ></canvas>
+        <img
+          id="mainImageSource"
+          src="blanks/template-03-main-banner.png"
+          class="is-hidden"
+        />
+        <img
+          id="moduleImageSource"
+          src="blanks/template-03-module-banner.png"
+          class="is-hidden"
+        />
+        <img id="mainImageDestination" class="is-hidden" />
+        <div id="moduleBanners"></div>
+      </section>
+    </div>
+
+    <script src="js/generate.js"></script>
+  </body>
+</html>
