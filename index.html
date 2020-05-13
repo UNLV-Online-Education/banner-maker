@@ -56,7 +56,18 @@
         </form>
       </section>
       <section id="finishedBanners" class="section">
-        <h2 class="title is-2">Custom Banners</h2>
+        <div style="vertical-align: middle;">
+          <h2 style="display: inline-block;" class="title is-2">
+            Custom Banners
+          </h2>
+          <button
+            onclick="toggleModal()"
+            style="margin-top: 0.8em; margin-left: 2em;"
+            class="button is-small is-primary is-outlined"
+          >
+            Change Style
+          </button>
+        </div>
         <canvas
           class="is-hidden"
           width="1100px"
@@ -83,7 +94,76 @@
         <div id="moduleBanners"></div>
       </section>
     </div>
-
+    <!-- style selector modal -->
+    <div id="styleSelectorModal" class="modal">
+      <div onclick="toggleModal()" class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <h2 class="is-header is-2">Choose style below</h2>
+        </header>
+        <section class="modal-card-body">
+          <div class="tile is-ancestor is-vertical">
+            <!-- All other tile elements -->
+            <div class="tile is-parent">
+              <div class="tile is-6">
+                <figure class="image">
+                  <img src="example-banners/Banner Template_01 Preview.png" />
+                </figure>
+              </div>
+              <div class="tile is-6">
+                <figure class="image">
+                  <img src="example-banners/Banner Template_02 Preview.png" />
+                </figure>
+              </div>
+            </div>
+            <div class="tile is-parent">
+              <div class="tile is-6">
+                <figure class="image">
+                  <img src="example-banners/Banner2-AG.jpg" />
+                </figure>
+              </div>
+              <div class="tile is-6">
+                <figure class="image">
+                  <img src="example-banners/CanvasTemplateBanner02_GG.png" />
+                </figure>
+              </div>
+            </div>
+            <div class="tile is-parent">
+              <div class="tile is-6">
+                <figure class="image">
+                  <img src="example-banners/main-banner-08.png" />
+                </figure>
+              </div>
+              <div class="tile is-6">
+                <figure class="image">
+                  <img src="example-banners/OE_TemplateBannerCompD.jpg" />
+                </figure>
+              </div>
+            </div>
+            <div class="tile is-parent">
+              <div class="tile is-6">
+                <figure class="image">
+                  <img
+                    src="example-banners/OE-DIY-main-banner-template-01.png"
+                  />
+                </figure>
+              </div>
+              <div class="tile is-6">
+                <figure class="image">
+                  <img src="example-banners/UNLV_Placeholder_Banner_01.png" />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <button
+        onclick="toggleModal()"
+        class="modal-close is-large"
+        aria-label="close"
+      ></button>
+    </div>
     <script src="js/generate.js"></script>
+    <script src="js/style-selector.js"></script>
   </body>
 </html>

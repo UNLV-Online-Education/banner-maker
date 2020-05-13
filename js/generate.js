@@ -34,7 +34,7 @@ function getModuleBannerData(name, moduleNumber) {
   ctx.shadowOffsetY = 0;
   ctx.shadowBlur = 5;
   ctx.font = '52pt Arial Narrow';
-  ctx.fillText(name, 40, 100);
+  ctx.fillText(name, 25, 108);
   //   Module Number
   ctx.fillStyle = 'white';
   ctx.shadowOffsetX = 0;
