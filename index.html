@@ -90,7 +90,12 @@
           src="blanks/template-03-module-banner.png"
           class="is-hidden"
         />
-        <img id="mainImageDestination" class="is-hidden" />
+        <div class="box">
+          <!-- <div class="content"> -->
+          <h3 class="is-3 title">Main Banner</h3>
+          <img id="mainImageDestination" class="is-hidden" />
+        </div>
+        <h3 class="is-3 title">Module Banners</h3>
         <div id="moduleBanners"></div>
       </section>
     </div>
@@ -102,8 +107,8 @@
           <h2 class="is-header is-2">Choose style below</h2>
         </header>
         <section class="modal-card-body">
+          <!-- choices -->
           <div class="tile is-ancestor is-vertical">
-            <!-- All other tile elements -->
             <div class="tile is-parent">
               <div class="tile is-6">
                 <figure class="image">
@@ -156,6 +161,7 @@
             </div>
           </div>
         </section>
+        <!-- footer -->
       </div>
       <button
         onclick="toggleModal()"
