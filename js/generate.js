@@ -20,6 +20,7 @@ function generateBanners() {
   for (var moduleNumber = 1; moduleNumber < 16; moduleNumber++) {
     let newImage = document.createElement('img');
     newImage.id = 'module-' + moduleNumber + '-banner';
+    newImage.classList.add('generated');
     if (moduleNumber > 1) {
       newImage.classList.toggle('is-hidden');
     }
@@ -27,6 +28,7 @@ function generateBanners() {
     previewZone.appendChild(newImage);
   }
   donePreviewLoading();
+  document.getElementById('previewZone').scrollIntoView(true);
 }
 
 function getModuleBannerData(name, moduleNumber) {
@@ -114,7 +116,16 @@ function initialize() {
 }
 
 function clearOldPreviews() {
-  console.info('Must write function: clear old previews');
+  var mainImage = document.getElementById('mainImageDestination');
+  if (mainImage) {
+    mainImage.parentNode.removeChild(mainImage);
+  }
+  for (var index = 1; index <= 16; index++) {
+    var currentItem = document.getElementById('module-' + index + '-banner');
+    if (currentItem) {
+      currentItem.parentElement.removeChild(currentItem);
+    }
+  }
 }
 
 function startPreviewLoading() {
