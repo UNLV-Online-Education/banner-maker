@@ -13,16 +13,10 @@
   </head>
 
   <body>
-    <div class="container">
-      <section class="section">
+    <section class="section">
+      <div class="container">
         <h1 class="title is-1">Make Course Banners</h1>
-        <p class="is-3">
-          Use this tool to compose banners you can copy and paste into your
-          Canvas course.
-        </p>
-      </section>
-      <section class="section">
-        <h2 class="title is-2">Enter Course Number and Title</h2>
+        <h2 class="title is-3">Step 1: Enter your course details</h2>
         <form id="my-form">
           <div class="field">
             <label class="label">Course Number</label>
@@ -49,56 +43,47 @@
           <div class="field">
             <div class="control">
               <button type="submit" class="button is-primary">
-                Create Banner Set
+                Preview Course Banners
               </button>
             </div>
           </div>
         </form>
-      </section>
-      <section id="finishedBanners" class="section">
-        <div style="vertical-align: middle;">
-          <h2 style="display: inline-block;" class="title is-2">
-            Custom Banners
-          </h2>
-          <button
+      </div>
+    </section>
+    <section id="finishedBanners" class="section">
+      <div id="previewZone" class="container is-relative">
+        <h2 id="previewHeader" class="title is-3 has-text-grey">
+          Step 2: Preview Banners
+        </h2>
+        <img
+          id="previewsLoading"
+          src="./loading.gif"
+          class="is-hidden is-overlay"
+        />
+        <!-- <button
             onclick="toggleModal()"
             style="margin-top: 0.8em; margin-left: 2em;"
             class="button is-small is-primary is-outlined"
           >
             Change Style
-          </button>
-        </div>
-        <canvas
-          class="is-hidden"
-          width="1100px"
-          height="300px"
-          id="mainBanner"
-        ></canvas>
-        <canvas
-          class="is-hidden"
-          width="1100px"
-          height="150"
-          id="moduleBanner"
-        ></canvas>
-        <img
-          id="mainImageSource"
-          src="blanks/template-03-main-banner.png"
-          class="is-hidden"
-        />
-        <img
-          id="moduleImageSource"
-          src="blanks/template-03-module-banner.png"
-          class="is-hidden"
-        />
-        <div class="box">
-          <!-- <div class="content"> -->
-          <h3 class="is-3 title">Main Banner</h3>
-          <img id="mainImageDestination" class="is-hidden" />
-        </div>
-        <h3 class="is-3 title">Module Banners</h3>
-        <div id="moduleBanners"></div>
-      </section>
-    </div>
+          </button> -->
+      </div>
+    </section>
+    <section id="downloadSection" class="section">
+      <div class="container">
+        <h2 id="downloadHeader" class="title is-3 has-text-grey">
+          Step 3: Download Banners
+        </h2>
+        <button
+          id="downloadButton"
+          onclick="exportZip()"
+          class="button is-primary is-hidden"
+        >
+          Download All Banners as .Zip
+        </button>
+      </div>
+    </section>
+
     <!-- style selector modal -->
     <div id="styleSelectorModal" class="modal">
       <div onclick="toggleModal()" class="modal-background"></div>
@@ -111,7 +96,7 @@
           <div class="tile is-ancestor is-vertical">
             <div class="tile is-parent">
               <div class="tile is-6">
-                <figure class="image">
+                <figure class="image box">
                   <img src="example-banners/Banner Template_01 Preview.png" />
                 </figure>
               </div>
@@ -161,15 +146,18 @@
             </div>
           </div>
         </section>
-        <!-- footer -->
       </div>
-      <button
-        onclick="toggleModal()"
-        class="modal-close is-large"
-        aria-label="close"
-      ></button>
     </div>
+    <button
+      onclick="toggleModal()"
+      class="modal-close is-large"
+      aria-label="close"
+    ></button>
+    <script src="js/vendor/FileSaver.js"></script>
+    <script src="js/vendor/canvas-toBlob.js"></script>
+    <script src="js/vendor/jszip.min.js"></script>
     <script src="js/generate.js"></script>
+    <script src="js/export.js"></script>
     <script src="js/style-selector.js"></script>
   </body>
 </html>
