@@ -1,14 +1,17 @@
-window.onload = initialize;
+window.onload = initializeImages;
+
+var mainBlankLoaded = false;
+var moduleBlankLoaded = false;
+
 function generateBanners() {
-  startPreviewLoading();
   clearOldPreviews();
 
-  var name = document.getElementById('courseName');
-  name = name.value ? name.value.toLocaleUpperCase() : 'ABC 123';
-  var title = document.getElementById('courseTitle');
-  title = title.value
-    ? title.value.toLocaleUpperCase()
-    : 'COURSE NAME GOES HERE';
+  var name = document.getElementById('courseName').value.toLocaleUpperCase();
+  // name = name.value ? name.value.toLocaleUpperCase() : 'ABC 123';
+  var title = document.getElementById('courseTitle').value.toLocaleUpperCase();
+  // title = title.value
+  //   ? title.value.toLocaleUpperCase()
+  //   : 'COURSE NAME GOES HERE';
   var mainBannerData = getMainBannerData(name, title);
   var imgElement = new Image();
   imgElement.id = 'mainImageDestination';
@@ -28,7 +31,6 @@ function generateBanners() {
     previewZone.appendChild(newImage);
   }
   donePreviewLoading();
-  document.getElementById('previewZone').scrollIntoView(true);
 }
 
 function getModuleBannerData(name, moduleNumber) {
@@ -83,14 +85,21 @@ function getMainBannerData(name, title) {
 
 function processForm(e) {
   if (e.preventDefault) e.preventDefault();
-
   /* do what you want with the form */
+  toggleLoadingSpinner();
   generateBanners();
 
   // You must return false to prevent the default form behavior
   return false;
 }
-function initialize() {
+
+function initializeImages() {
+  mainBlankLoaded = false;
+  moduleBlankLoaded = false;
+
+  //activate loading image
+  toggleLoadingSpinner();
+
   var drawingCanvas = document.createElement('canvas');
   drawingCanvas.id = 'drawingCanvas';
   drawingCanvas.classList.add('is-hidden');
@@ -99,12 +108,24 @@ function initialize() {
   var mainImageSource = new Image();
   mainImageSource.id = 'mainImageSource';
   mainImageSource.classList.add('is-hidden');
+  mainImageSource.onload = function () {
+    mainBlankLoaded = true;
+    if (moduleBlankLoaded) {
+      generateBanners();
+    }
+  };
   document.body.appendChild(mainImageSource);
   mainImageSource.src = 'blanks/template-03-main-banner.png';
   // Module Image Source
   var moduleImageSource = new Image();
   moduleImageSource.id = 'moduleImageSource';
   moduleImageSource.classList.add('is-hidden');
+  moduleImageSource.onload = function () {
+    moduleBlankLoaded = true;
+    if (mainBlankLoaded) {
+      generateBanners();
+    }
+  };
   document.body.appendChild(moduleImageSource);
   moduleImageSource.src = 'blanks/template-03-module-banner.png';
   var form = document.getElementById('my-form');
@@ -128,17 +149,13 @@ function clearOldPreviews() {
   }
 }
 
-function startPreviewLoading() {
-  var loadingImage = document.getElementById('previewsLoading');
-  loadingImage.classList.remove('is-hidden');
-  var header = document.getElementById('previewHeader');
-  header.classList.remove('has-text-grey');
-}
 function donePreviewLoading() {
-  var loadingImage = document.getElementById('previewsLoading');
-  loadingImage.classList.add('is-hidden');
-  var header = document.getElementById('downloadHeader');
-  header.classList.remove('has-text-grey');
+  toggleLoadingSpinner();
   var downloadButton = document.getElementById('downloadButton');
-  downloadButton.classList.remove('is-hidden');
+  downloadButton.attributes.removeNamedItem('disabled');
+}
+
+function toggleLoadingSpinner() {
+  document.getElementById('previewButton').classList.toggle('is-loading');
+  document.getElementById('previewsLoading').classList.toggle('is-hidden');
 }

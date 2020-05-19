@@ -15,7 +15,7 @@
     <section class="section">
       <div class="container">
         <h1 class="title is-1">Make Course Banners</h1>
-        <h2 class="title is-3">Step 1: Enter your course details</h2>
+        <h2 class="title is-3">Enter Course Details</h2>
         <form id="my-form">
           <div class="field">
             <label class="label">Course Number</label>
@@ -24,7 +24,7 @@
                 id="courseName"
                 class="input"
                 type="text"
-                placeholder="ABC 123"
+                value="ABC 123"
               />
             </div>
           </div>
@@ -35,44 +35,66 @@
                 id="courseTitle"
                 class="input"
                 type="text"
-                placeholder="Course Name Goes Here"
+                value="Course Name Goes Here"
               />
             </div>
           </div>
           <div class="field">
             <div class="control">
-              <button type="submit" class="button is-primary">
+              <button
+                id="previewButton"
+                type="submit"
+                class="button is-primary"
+              >
                 Preview Course Banners
+              </button>
+              <button
+                id="downloadButton"
+                onclick="exportZip()"
+                class="button"
+                disabled
+              >
+                Download Banners (.zip)
               </button>
             </div>
           </div>
         </form>
       </div>
     </section>
-    <section id="finishedBanners" class="section">
+    <section id="downloadSection" class="section">
+      <div class="container">
+        <h2
+          id="downloadHeader"
+          style="display: inline-block;"
+          class="title is-3"
+        >
+          Preview Banners
+        </h2>
+        <button
+          onclick="toggleModal()"
+          style="margin-top: 0.8em; margin-left: 2em;"
+          class="button is-small is-primary is-outlined"
+        >
+          Select Style
+        </button>
+        <div id="previewZone" class="container">
+          <img id="previewsLoading" src="./loading.gif" class="is-hidden" />
+        </div>
+      </div>
+    </section>
+    <!-- <section id="finishedBanners" class="section">
       <div id="previewZone" class="container is-relative">
         <h2 id="previewHeader" class="title is-3 has-text-grey">
-          Step 2: Preview Banners
+          Step 3: Preview and Download
         </h2>
         <img
           id="previewsLoading"
           src="./loading.gif"
           class="is-hidden is-overlay"
         />
-        <!-- <button
-            onclick="toggleModal()"
-            style="margin-top: 0.8em; margin-left: 2em;"
-            class="button is-small is-primary is-outlined"
-          >
-            Change Style
-          </button> -->
       </div>
-    </section>
-    <section id="downloadSection" class="section">
-      <div class="container">
-        <h2 id="downloadHeader" class="title is-3 has-text-grey">
-          Step 3: Download Banners
-        </h2>
+      <section id="downloadSection" class="section">
+      <div id="downloadZone" class="container">
         <button
           id="downloadButton"
           onclick="exportZip()"
@@ -81,7 +103,7 @@
           Download All Banners as .Zip
         </button>
       </div>
-    </section>
+    </section> -->
 
     <!-- style selector modal -->
     <div id="styleSelectorModal" class="modal">
