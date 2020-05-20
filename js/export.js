@@ -12,7 +12,7 @@ function exportZip() {
     });
   }
   zip.generateAsync({ type: 'blob' }).then(function (content) {
-    saveAs(content, 'UNLV-Course-Banners.zip');
+    saveAs(content, 'Course Banners.zip');
   });
 }
 
