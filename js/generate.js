@@ -3,16 +3,15 @@ window.onload = initializeImages;
 var mainBlankLoaded = false;
 var moduleBlankLoaded = false;
 
+var currentStyle = allBannerStyles[0];
+
 function generateBanners() {
   clearOldPreviews();
 
   var name = document.getElementById('courseName').value.toLocaleUpperCase();
-  // name = name.value ? name.value.toLocaleUpperCase() : 'ABC 123';
   var title = document.getElementById('courseTitle').value.toLocaleUpperCase();
-  // title = title.value
-  //   ? title.value.toLocaleUpperCase()
-  //   : 'COURSE NAME GOES HERE';
-  var mainBannerData = getMainBannerData(name, title);
+
+  var mainBannerData = currentStyle.getMainBannerData(name, title);
   var imgElement = new Image();
   imgElement.id = 'mainImageDestination';
   imgElement.src = mainBannerData;
@@ -27,60 +26,10 @@ function generateBanners() {
     if (moduleNumber > 1) {
       newImage.classList.toggle('is-hidden');
     }
-    newImage.src = getModuleBannerData(name, moduleNumber);
+    newImage.src = currentStyle.getModuleBannerData(name, moduleNumber);
     previewZone.appendChild(newImage);
   }
   donePreviewLoading();
-}
-
-function getModuleBannerData(name, moduleNumber) {
-  drawingCanvas.width = 1100;
-  drawingCanvas.height = 150;
-  var ctx = drawingCanvas.getContext('2d');
-  ctx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
-
-  ctx.drawImage(document.getElementById('moduleImageSource'), 0, 0);
-  //   Course Number
-  ctx.fillStyle = 'white';
-  ctx.shadowColor = 'black';
-  ctx.shadowOffsetX = 0;
-  ctx.shadowOffsetY = 0;
-  ctx.shadowBlur = 5;
-  ctx.font = '52pt Arial Narrow';
-  ctx.fillText(name, 25, 108);
-  //   Module Number
-  ctx.fillStyle = 'white';
-  ctx.shadowOffsetX = 0;
-  ctx.shadowOffsetY = 0;
-  ctx.shadowBlur = 0;
-  ctx.font = '22pt "Arial Narrow"';
-  ctx.fillText('module'.toUpperCase() + ' ' + moduleNumber, 360, 125);
-  return drawingCanvas.toDataURL();
-}
-
-function getMainBannerData(name, title) {
-  var drawingCanvas = document.getElementById('drawingCanvas');
-  drawingCanvas.width = 1100;
-  drawingCanvas.height = 300;
-  var ctx = drawingCanvas.getContext('2d');
-  ctx.drawImage(document.getElementById('mainImageSource'), 0, 0);
-  //   Course Number
-  ctx.fillStyle = 'white';
-  ctx.shadowColor = 'black';
-  ctx.shadowOffsetX = 0;
-  ctx.shadowOffsetY = 0;
-  ctx.shadowBlur = 5;
-  ctx.font = '80pt Arial Narrow';
-  ctx.fillText(name, 40, 174);
-  //   Course Title
-  ctx.fillStyle = 'lightgray';
-  ctx.shadowOffsetX = 0;
-  ctx.shadowOffsetY = 0;
-  ctx.shadowBlur = 0;
-  ctx.font = '26pt "Arial Narrow"';
-  ctx.fillText(title, 40, 234, 450);
-  // Make an IMG
-  return drawingCanvas.toDataURL();
 }
 
 function processForm(e) {
@@ -115,7 +64,7 @@ function initializeImages() {
     }
   };
   document.body.appendChild(mainImageSource);
-  mainImageSource.src = 'blanks/template-03-main-banner.png';
+  mainImageSource.src = currentStyle.mainBlankSrc;
   // Module Image Source
   var moduleImageSource = new Image();
   moduleImageSource.id = 'moduleImageSource';
@@ -127,7 +76,7 @@ function initializeImages() {
     }
   };
   document.body.appendChild(moduleImageSource);
-  moduleImageSource.src = 'blanks/template-03-module-banner.png';
+  moduleImageSource.src = currentStyle.moduleBlankSrc;
   var form = document.getElementById('my-form');
   if (form.attachEvent) {
     form.attachEvent('submit', processForm);
@@ -152,7 +101,9 @@ function clearOldPreviews() {
 function donePreviewLoading() {
   toggleLoadingSpinner();
   var downloadButton = document.getElementById('downloadButton');
-  downloadButton.attributes.removeNamedItem('disabled');
+  if (downloadButton.getAttribute('disabled')) {
+    downloadButton.attributes.removeNamedItem('disabled');
+  }
 }
 
 function toggleLoadingSpinner() {
