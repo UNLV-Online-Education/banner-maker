@@ -117,15 +117,35 @@
           <div class="tile is-ancestor is-vertical">
             <div class="tile is-parent">
               <div class="tile is-6">
-                <figure class="image box">
+                <figure class="image">
                   <img
-                    src="images/example-banners/Banner Template_01 Preview.png"
+                    onclick="chooseStyle(0)"
+                    src="images/example-banners/example-banner-01.png"
                   />
                 </figure>
               </div>
               <div class="tile is-6">
                 <figure class="image">
                   <img
+                    onclick="chooseStyle(1)"
+                    src="images/example-banners/example-banner-02.jpg"
+                  />
+                </figure>
+              </div>
+            </div>
+            <div class="tile is-parent">
+              <div class="tile is-6">
+                <figure class="image box">
+                  <img
+                    onclick="chooseStyle(2)"
+                    src="images/example-banners/example-banner-03.png"
+                  />
+                </figure>
+              </div>
+              <div class="tile is-6">
+                <figure class="image">
+                  <img
+                    onclick="chooseStyle(3)"
                     src="images/example-banners/Banner Template_02 Preview.png"
                   />
                 </figure>
@@ -159,22 +179,6 @@
                 </figure>
               </div>
             </div>
-            <div class="tile is-parent">
-              <div class="tile is-6">
-                <figure class="image">
-                  <img
-                    src="images/example-banners/OE-DIY-main-banner-template-01.png"
-                  />
-                </figure>
-              </div>
-              <div class="tile is-6">
-                <figure class="image">
-                  <img
-                    src="images/example-banners/UNLV_Placeholder_Banner_01.png"
-                  />
-                </figure>
-              </div>
-            </div>
           </div>
         </section>
       </div>
@@ -184,6 +188,9 @@
       class="modal-close is-large"
       aria-label="close"
     ></button>
+    <canvas id="drawingCanvas" class="is-hidden"></canvas>
+    <img id="mainImageSource" class="is-hidden" src="" />
+    <img id="moduleImageSource" class="is-hidden" src="" />
     <script src="js/vendor/FileSaver.js"></script>
     <script src="js/vendor/canvas-toBlob.js"></script>
     <script src="js/vendor/jszip.min.js"></script>

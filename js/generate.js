@@ -1,15 +1,53 @@
-window.onload = initializeImages;
+window.onload = init;
 
 var mainBlankLoaded = false;
 var moduleBlankLoaded = false;
+var currentStyle = allBannerStyles[3];
 
-var currentStyle = allBannerStyles[0];
+function init() {
+  var form = document.getElementById('my-form');
+  if (form.attachEvent) {
+    form.attachEvent('submit', processForm);
+  } else {
+    form.addEventListener('submit', processForm);
+  }
+
+  initializeImages();
+}
+
+function initializeImages() {
+  mainBlankLoaded = false;
+  moduleBlankLoaded = false;
+
+  //activate loading image
+  toggleLoadingSpinner();
+
+  // Set Main Image Source
+  var mainImageSource = document.getElementById('mainImageSource');
+  mainImageSource.onload = function () {
+    mainBlankLoaded = true;
+    if (moduleBlankLoaded) {
+      generateBanners();
+    }
+  };
+  mainImageSource.src = currentStyle.mainBlankSrc;
+
+  // Set Module Image Source
+  var moduleImageSource = document.getElementById('moduleImageSource');
+  moduleImageSource.onload = function () {
+    moduleBlankLoaded = true;
+    if (mainBlankLoaded) {
+      generateBanners();
+    }
+  };
+  moduleImageSource.src = currentStyle.moduleBlankSrc;
+}
 
 function generateBanners() {
   clearOldPreviews();
 
-  var name = document.getElementById('courseName').value.toLocaleUpperCase();
-  var title = document.getElementById('courseTitle').value.toLocaleUpperCase();
+  var name = document.getElementById('courseName').value;
+  var title = document.getElementById('courseTitle').value;
 
   var mainBannerData = currentStyle.getMainBannerData(name, title);
   var imgElement = new Image();
@@ -42,47 +80,10 @@ function processForm(e) {
   return false;
 }
 
-function initializeImages() {
-  mainBlankLoaded = false;
-  moduleBlankLoaded = false;
-
-  //activate loading image
-  toggleLoadingSpinner();
-
-  var drawingCanvas = document.createElement('canvas');
-  drawingCanvas.id = 'drawingCanvas';
-  drawingCanvas.classList.add('is-hidden');
-  document.body.appendChild(drawingCanvas);
-  // Set Source Images
-  var mainImageSource = new Image();
-  mainImageSource.id = 'mainImageSource';
-  mainImageSource.classList.add('is-hidden');
-  mainImageSource.onload = function () {
-    mainBlankLoaded = true;
-    if (moduleBlankLoaded) {
-      generateBanners();
-    }
-  };
-  document.body.appendChild(mainImageSource);
-  mainImageSource.src = currentStyle.mainBlankSrc;
-  // Module Image Source
-  var moduleImageSource = new Image();
-  moduleImageSource.id = 'moduleImageSource';
-  moduleImageSource.classList.add('is-hidden');
-  moduleImageSource.onload = function () {
-    moduleBlankLoaded = true;
-    if (mainBlankLoaded) {
-      generateBanners();
-    }
-  };
-  document.body.appendChild(moduleImageSource);
-  moduleImageSource.src = currentStyle.moduleBlankSrc;
-  var form = document.getElementById('my-form');
-  if (form.attachEvent) {
-    form.attachEvent('submit', processForm);
-  } else {
-    form.addEventListener('submit', processForm);
-  }
+function chooseStyle(styleIndex) {
+  currentStyle = allBannerStyles[styleIndex];
+  toggleModal();
+  initializeImages();
 }
 
 function clearOldPreviews() {
