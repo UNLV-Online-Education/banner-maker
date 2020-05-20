@@ -2,7 +2,7 @@ window.onload = init;
 
 var mainBlankLoaded = false;
 var moduleBlankLoaded = false;
-var currentStyle = allBannerStyles[5];
+var currentStyle = allBannerStyles[7];
 
 function init() {
   var form = document.getElementById('my-form');

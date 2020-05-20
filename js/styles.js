@@ -250,6 +250,84 @@ var allBannerStyles = [
       return getCanvas().toDataURL();
     },
   },
+  // Style 6
+  {
+    mainBlankSrc: 'images/blanks/main-banner-template-07.png',
+    moduleBlankSrc: 'images/blanks/template_07-module-banner.png',
+    getMainBannerData: function (name, title) {
+      var ctx = prepareCanvas('mainImageSource');
+
+      //   Course Number
+      ctx.fillStyle = 'white';
+      ctx.shadowColor = 'black';
+      ctx.shadowOffsetX = 1;
+      ctx.shadowOffsetY = 1;
+      ctx.shadowBlur = 2;
+      ctx.font = 'bold 56pt Verdana';
+      ctx.fillText(name.toUpperCase(), 20, 125);
+      //   Course Title
+      ctx.fillStyle = 'white';
+      ctx.shadowOffsetX = 1;
+      ctx.shadowOffsetY = 1;
+      ctx.shadowBlur = 1;
+      ctx.font = '20pt "Verdana"';
+      ctx.fillText(title, 20, 165);
+      // Make an IMG
+      return getCanvas().toDataURL();
+    },
+    getModuleBannerData: function (name, moduleNumber) {
+      var ctx = prepareCanvas('moduleImageSource');
+
+      //   Module Number
+      ctx.fillStyle = 'white';
+      ctx.shadowColor = 'black';
+      ctx.shadowOffsetX = 1;
+      ctx.shadowOffsetY = 0;
+      ctx.shadowBlur = 2;
+      ctx.font = 'bold 48pt Verdana';
+      ctx.fillText('module'.toUpperCase() + ' ' + moduleNumber, 100, 115);
+      return getCanvas().toDataURL();
+    },
+  },
+  // Style 7
+  {
+    mainBlankSrc: 'images/blanks/main-banner-template-08.png',
+    moduleBlankSrc: 'images/blanks/template_08-module-banner.png',
+    getMainBannerData: function (name, title) {
+      var ctx = prepareCanvas('mainImageSource');
+
+      //   Course Number
+      ctx.fillStyle = 'white';
+      ctx.shadowColor = 'black';
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+      ctx.shadowBlur = 0;
+      ctx.font = 'bold 64pt Roboto';
+      ctx.fillText(name.toUpperCase(), 20, 120);
+      //   Course Title
+      ctx.fillStyle = 'white';
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+      ctx.shadowBlur = 1;
+      ctx.font = '24pt "Roboto"';
+      ctx.fillText(title, 20, 170);
+      // Make an IMG
+      return getCanvas().toDataURL();
+    },
+    getModuleBannerData: function (name, moduleNumber) {
+      var ctx = prepareCanvas('moduleImageSource');
+
+      //   Module Number
+      ctx.fillStyle = 'white';
+      ctx.shadowColor = 'black';
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+      ctx.shadowBlur = 0;
+      ctx.font = '28pt Roboto';
+      ctx.fillText('module'.toUpperCase() + ' ' + moduleNumber, 12, 110);
+      return getCanvas().toDataURL();
+    },
+  },
 ];
 
 function getCanvas() {
