@@ -2,7 +2,9 @@ window.onload = init;
 
 var mainBlankLoaded = false;
 var moduleBlankLoaded = false;
-var currentStyle = allBannerStyles[7];
+var firstTimeLoading = true;
+
+var currentStyle = allBannerStyles[2];
 
 function init() {
   var form = document.getElementById('my-form');
@@ -68,6 +70,10 @@ function generateBanners() {
     previewZone.appendChild(newImage);
   }
   donePreviewLoading();
+  if (!firstTimeLoading) {
+    enableAndAlertTheDownloadButton();
+  }
+  firstTimeLoading = false;
 }
 
 function processForm(e) {
@@ -101,13 +107,25 @@ function clearOldPreviews() {
 
 function donePreviewLoading() {
   toggleLoadingSpinner();
-  var downloadButton = document.getElementById('downloadButton');
-  if (downloadButton.getAttribute('disabled')) {
-    downloadButton.attributes.removeNamedItem('disabled');
-  }
 }
 
 function toggleLoadingSpinner() {
   document.getElementById('previewButton').classList.toggle('is-loading');
   document.getElementById('previewsLoading').classList.toggle('is-hidden');
+}
+
+function enableAndAlertTheDownloadButton() {
+  document.getElementById('downloadButton').classList.toggle('is-loading');
+
+  window.setTimeout(function () {
+    document.getElementById('downloadButton').scrollIntoView();
+    window.setTimeout(function () {
+      var downloadButton = document.getElementById('downloadButton');
+      if (downloadButton.getAttribute('disabled')) {
+        downloadButton.attributes.removeNamedItem('disabled');
+      }
+      downloadButton.classList.toggle('is-loading');
+      downloadButton.attributes.removeNamedItem('disabled');
+    }, 1000);
+  }, 1000);
 }

@@ -52,26 +52,14 @@
               >
                 Preview Course Banners
               </button>
-              <button
-                id="downloadButton"
-                onclick="exportZip()"
-                class="button"
-                disabled
-              >
-                Download Banners (.zip)
-              </button>
             </div>
           </div>
         </form>
       </div>
     </section>
-    <section id="downloadSection" class="section">
+    <section class="section">
       <div class="container">
-        <h2
-          id="downloadHeader"
-          style="display: inline-block;"
-          class="title is-3"
-        >
+        <h2 style="display: inline-block;" class="title is-3">
           Preview Banners
         </h2>
         <button
@@ -79,35 +67,30 @@
           style="margin-top: 0.8em; margin-left: 2em;"
           class="button is-small is-primary is-outlined"
         >
-          Select Style
+          Change Style
         </button>
         <div id="previewZone" class="container">
           <img id="previewsLoading" src="./loading.gif" class="is-hidden" />
         </div>
       </div>
     </section>
-    <!-- <section id="finishedBanners" class="section">
-      <div id="previewZone" class="container is-relative">
-        <h2 id="previewHeader" class="title is-3 has-text-grey">
-          Step 3: Preview and Download
+    <section class="section">
+      <div class="container">
+        <h2 style="display: inline-block;" class="title is-3">
+          Download
         </h2>
-        <img
-          id="previewsLoading"
-          src="./loading.gif"
-          class="is-hidden is-overlay"
-        />
+        <p>
+          <button
+            id="downloadButton"
+            disabled
+            onclick="exportZip()"
+            class="button is-large is-primary"
+          >
+            Download Banners (.zip)
+          </button>
+        </p>
       </div>
-      <section id="downloadSection" class="section">
-      <div id="downloadZone" class="container">
-        <button
-          id="downloadButton"
-          onclick="exportZip()"
-          class="button is-primary is-hidden"
-        >
-          Download All Banners as .Zip
-        </button>
-      </div>
-    </section> -->
+    </section>
 
     <!-- style selector modal -->
     <div id="styleSelectorModal" class="modal">
