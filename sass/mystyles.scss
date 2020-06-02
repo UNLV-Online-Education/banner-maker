@@ -9,6 +9,7 @@ $grey-accent: #6a737b;
 $text-default: rgba(0, 0, 0, 0.87);
 $beige-light: #d0d1cd;
 $beige-lighter: #eeeeee;
+$white: #fff;
 
 // Update Bulma's global variables
 $family-sans-serif: 'Roboto', sans-serif;
@@ -16,14 +17,9 @@ $grey-dark: $text-default;
 $grey-light: $beige-light;
 $primary: $scarlet;
 $link: $grey-accent;
-$widescreen-enabled: false;
-$fullhd-enabled: false;
 
 // Update some of Bulma's component variables
-$body-background-color: $beige-lighter;
-$control-border-width: 2px;
-$input-border-color: transparent;
-$input-shadow: none;
+$body-background-color: $white;
 
 // Import only what you need from Bulma
 @import '../node_modules/bulma/bulma.sass';
