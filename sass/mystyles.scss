@@ -16,11 +16,14 @@ $family-sans-serif: 'Roboto', sans-serif;
 $grey-dark: $text-default;
 $grey-light: $beige-light;
 $primary: $scarlet;
-$link: $grey-accent;
+$link: $scarlet;
 
 // Update some of Bulma's component variables
 $body-background-color: $white;
 
+.content a {
+  text-decoration: underline;
+}
 // Import only what you need from Bulma
 @import '../node_modules/bulma/bulma.sass';
 // @import '../node_modules/bulma/sass/utilities/_all.sass';

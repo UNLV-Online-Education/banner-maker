@@ -36,19 +36,51 @@
   <body>
     <section class="section">
       <div class="container">
-        <h1 class="title is-1">Make Course Banners</h1>
+        <h1 class="title is-1">Course Banners</h1>
 
+        <h3 class="title is-3">What are Banners?</h3>
         <div class="columns">
           <div class="column">
             <p class="content">
-              Banners are the "title" images for a course or a module. Using
-              some consistent imagery can give your course a more polished look,
-              and provide a familiar look-and-feel for students.
+              Banners are graphics used at start of a course, or to indicate
+              which section of a course is being viewed. Banners often include
+              the name of the course or module. Students are used to seeing
+              banners in online courses, and they can give a course a more
+              polished and cohesive visual design.
+            </p>
+            <p class="content">
+              The Office of Online Education created this tool for UNLV faculty
+              to quickly create banners they can use in Webcampus without
+              requiring photo editing techniques. There are also tools you can
+              use if you want more control over the creative process of making
+              these graphics. We have a guide for
+              <a
+                href="https://drive.google.com/file/d/1E6pREIrOMDXKKkdJKT99WRacbthqRNzw/view"
+                >using Canva to create Banners</a
+              >.
+            </p>
+            <p class="content">
+              Many faculty also work directly with our
+              <a
+                href="https://www.unlv.edu/teach-online/mediacenter/graphics-images#"
+                >Media Center</a
+              >
+              to create customized graphics or activities for their courses.
+              Fill out the
+              <a
+                href="https://www.unlv.edu/teach-online/mediacenter/make-request"
+                >Media Request Form</a
+              >
+              and a member of our team will reach out to you with more
+              information.
             </p>
           </div>
           <div class="column">
             <figure class="image">
-              <img src="images/canvas-course-homepage.png" />
+              <img
+                src="images/canvas-course-homepage.png"
+                alt="screenshot of WebCampus course with a course banner image"
+              />
             </figure>
           </div>
         </div>
@@ -57,42 +89,49 @@
 
     <section class="section">
       <div class="container">
-        <h2 class="title is-3">Enter Course Details</h2>
-        <form id="my-form">
-          <div class="field">
-            <label class="label">Course Number</label>
-            <div class="control">
-              <input
-                id="courseName"
-                class="input"
-                type="text"
-                value="ABC 123"
-              />
+        <div class="box">
+          <h2 class="title is-3">Customize your Own Banner</h2>
+          <p class="content">
+            <strong>Customize one of our pre-designed banners.</strong> Enter
+            your course details below and preview what the banner design will
+            look like.
+          </p>
+          <form id="my-form">
+            <div class="field">
+              <label class="label">Course Number</label>
+              <div class="control">
+                <input
+                  id="courseName"
+                  class="input"
+                  type="text"
+                  value="ABC 123"
+                />
+              </div>
             </div>
-          </div>
-          <div class="field">
-            <label class="label">Course Title</label>
-            <div class="control">
-              <input
-                id="courseTitle"
-                class="input"
-                type="text"
-                value="Course Name Goes Here"
-              />
+            <div class="field">
+              <label class="label">Course Title</label>
+              <div class="control">
+                <input
+                  id="courseTitle"
+                  class="input"
+                  type="text"
+                  value="Course Name Goes Here"
+                />
+              </div>
             </div>
-          </div>
-          <div class="field">
-            <div class="control">
-              <button
-                id="previewButton"
-                type="submit"
-                class="button is-primary"
-              >
-                Preview Course Banners
-              </button>
+            <div class="field">
+              <div class="control">
+                <button
+                  id="previewButton"
+                  type="submit"
+                  class="button is-primary"
+                >
+                  Preview Course Banners
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </section>
     <section class="section">
@@ -117,7 +156,7 @@
         <h2 style="display: inline-block;" class="title is-3">
           Download
         </h2>
-        <p>
+        <p class="content">
           <button
             id="downloadButton"
             disabled
@@ -127,9 +166,60 @@
             Download Banners (.zip)
           </button>
         </p>
+        <p class="content">
+          Login to your WebCampus course and add the banner, being sure to add
+          alt text as needed.
+        </p>
+        <p class="content">
+          Follow these
+          <a
+            href="https://community.canvaslms.com/thread/26207-creating-a-banner-for-course"
+            >instructions on adding the banner to your WebCampus course</a
+          >.
+        </p>
       </div>
     </section>
-
+    <section class="section">
+      <div class="container">
+        <h2 class="title is-3">
+          Please Keep in Mind
+        </h2>
+        <h3 class="title is-4">Accessibility Considerations</h3>
+        <p class="content">
+          As with all visual images added to a course, descriptive alt text will
+          need to be added to images created in Canva. The Office of
+          Accessibility Resources provides training on how to add this text to
+          the images when they’re placed in WebCampus. Visit:
+          <a href="https://www.unlv.edu/accessibility"
+            >The Office of Accessibility Resources</a
+          >
+        </p>
+        <h3 class="title is-4">Copryright Considerations</h3>
+        <p class="content">
+          Faculty must ensure that the image(s) they source to use do not
+          violate copyright protections. For more information please visit:
+          <a href="https://www.unlv.edu/provost/copyright"
+            >UNLV Copyright Information</a
+          >
+          and
+          <a href="https://guides.library.unlv.edu/copyright"
+            >UNLV Libraries: Copyright and Author Rights</a
+          >.
+        </p>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          For more information and resources visit
+          <a href="https://www.unlv.edu/teach-online">UNLV Teach Online</a>.
+          This tool is produced by the
+          <a href="https://www.unlv.edu/provost/online-education"
+            >UNLV Office of Online Education</a
+          >.
+        </p>
+      </div>
+    </footer>
     <!-- style selector modal -->
     <div id="styleSelectorModal" class="modal">
       <div onclick="toggleModal()" class="modal-background"></div>
