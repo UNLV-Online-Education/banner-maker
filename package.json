@@ -6,7 +6,8 @@
   "scripts": {
     "css-build": "node-sass --omit-source-map-url sass/mystyles.scss css/mystyles.css",
     "css-watch": "npm run css-build -- --watch",
-    "start": "npm run css-watch"
+    "start": "npm run css-watch",
+    "deploy": "rsync -avz --exclude='.git' --exclude='node_modules' --exclude='sass' ./ rootb1@aa-apach-wsp-01.online.unlv.edu:/var/www/html/courses.online.unlv.edu/banner-maker/"
   },
   "author": "",
   "license": "UNLICENSED",
