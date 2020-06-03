@@ -177,7 +177,22 @@ var allBannerStyles = [
       ctx.shadowOffsetY = 0;
       ctx.shadowBlur = 0;
       ctx.font = '26pt "Arial Narrow"';
-      ctx.fillText(title.toUpperCase(), 40, 220);
+      // split title if too long
+      if (title.length <= 30) {
+        ctx.fillText(title.toUpperCase(), 40, 220);
+      } else if (title.length > 30 && title.length < 60) {
+        var newTitle = stringDivider(title, 30, '\n').split('\n');
+        ctx.fillText(newTitle[0].trim().toUpperCase(), 40, 225);
+        ctx.fillText(newTitle[1].trim().toUpperCase(), 40, 270);
+      } else {
+        var newTitle = stringDivider(
+          title,
+          Math.floor(title.length / 2),
+          '\n'
+        ).split('\n');
+        ctx.fillText(newTitle[0].trim().toUpperCase(), 40, 225, 550);
+        ctx.fillText(newTitle[1].trim().toUpperCase(), 40, 270, 550);
+      }
       // Make an IMG
       return getCanvas().toDataURL();
     },
