@@ -19,7 +19,24 @@ var allBannerStyles = [
       ctx.shadowOffsetY = 0;
       ctx.shadowBlur = 0;
       ctx.font = '24pt "Arial"';
-      ctx.fillText(title, 200, 200);
+
+      // split title if too long
+      if (title.length <= 30) {
+        ctx.fillText(title, 200, 200);
+      } else if (title.length > 30 && title.length < 60) {
+        var newTitle = stringDivider(title, 30, '\n').split('\n');
+        ctx.fillText(newTitle[0].trim(), 200, 200);
+        ctx.fillText(newTitle[1].trim(), 200, 250);
+      } else {
+        var newTitle = stringDivider(
+          title,
+          Math.floor(title.length / 2),
+          '\n'
+        ).split('\n');
+        ctx.fillText(newTitle[0], 200, 200, 420);
+        ctx.fillText(newTitle[1], 200, 240, 420);
+      }
+
       // Make an IMG
       return getCanvas().toDataURL();
     },
@@ -56,7 +73,29 @@ var allBannerStyles = [
       ctx.shadowOffsetY = 0;
       ctx.shadowBlur = 0;
       ctx.font = '26pt "Arial Narrow"';
-      ctx.fillText(title.toUpperCase(), 120, 145);
+      // split title if too long
+      if (title.length <= 30) {
+        ctx.fillText(title.toUpperCase(), 120, 145);
+      } else if (title.length > 33 && title.length < 66) {
+        var newTitle = stringDivider(title, 30, '\n').split('\n');
+        ctx.fillStyle = '#e5e5e5';
+        ctx.fillRect(75, 154, 645, 200);
+        ctx.fillStyle = '#666';
+        ctx.fillText(newTitle[0].trim().toUpperCase(), 120, 145);
+        ctx.fillText(newTitle[1].trim().toUpperCase(), 120, 185);
+      } else {
+        var newTitle = stringDivider(
+          title,
+          Math.floor(title.length / 2),
+          '\n'
+        ).split('\n');
+        ctx.fillStyle = '#e5e5e5';
+        ctx.fillRect(76, 154, 644, 200);
+        ctx.fillStyle = '#666';
+        ctx.fillText(newTitle[0].trim().toUpperCase(), 120, 145, 540);
+        ctx.fillText(newTitle[1].trim().toUpperCase(), 120, 185, 540);
+      }
+
       // Make an IMG
       return getCanvas().toDataURL();
     },
@@ -342,4 +381,18 @@ function prepareCanvas(sourceName) {
   ctx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
   ctx.drawImage(document.getElementById(sourceName), 0, 0);
   return ctx;
+}
+
+function stringDivider(str, width, spaceReplacer) {
+  if (str.length > width) {
+    var p = width;
+    for (; p > 0 && str[p] != ' '; p--) {}
+    if (p > 0) {
+      var left = str.substring(0, p);
+      var right = str.substring(p + 1);
+      return left + spaceReplacer + right;
+      // return left + spaceReplacer + stringDivider(right, width, spaceReplacer);
+    }
+  }
+  return str;
 }
