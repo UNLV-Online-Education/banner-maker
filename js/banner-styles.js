@@ -113,7 +113,7 @@ var allBannerStyles = [
       return getCanvas().toDataURL();
     },
   },
-  // Style 2
+  // Style 2 sunset view
   {
     mainBlankSrc: 'images/blanks/main-banner-template-03.png',
     moduleBlankSrc: 'images/blanks/template_03-module-banner.png',
@@ -128,12 +128,42 @@ var allBannerStyles = [
       ctx.font = 'bold 80pt Arial Narrow';
       ctx.fillText(name.toUpperCase(), 40, 174);
       //   Course Title
+
       ctx.fillStyle = 'lightgray';
       ctx.shadowOffsetX = 0;
       ctx.shadowOffsetY = 0;
       ctx.shadowBlur = 0;
       ctx.font = '26pt "Arial Narrow"';
-      ctx.fillText(title.toUpperCase(), 40, 234, 450);
+      // split title if too long
+      var lengthToSplit = 25;
+      if (title.length <= lengthToSplit) {
+        ctx.fillText(title.toUpperCase(), 40, 234, 450);
+      } else if (
+        title.length > lengthToSplit &&
+        title.length < lengthToSplit * 2
+      ) {
+        // add 2nd line text background
+        style2_DrawBg(ctx);
+        // reset fill style
+        ctx.fillStyle = 'lightgray';
+        var newTitle = stringDivider(title, lengthToSplit, '\n').split('\n');
+        ctx.fillText(newTitle[0].trim().toUpperCase(), 40, 234, 420);
+        ctx.fillText(newTitle[1].trim().toUpperCase(), 40, 274, 440);
+      } else {
+        // add 2nd line text background
+        style2_DrawBg(ctx);
+        // reset fill style
+        ctx.fillStyle = 'lightgray';
+
+        var newTitle = stringDivider(
+          title,
+          Math.floor(title.length / 2),
+          '\n'
+        ).split('\n');
+        ctx.fillText(newTitle[0].trim().toUpperCase(), 40, 234, 460);
+        ctx.fillText(newTitle[1].trim().toUpperCase(), 40, 274, 480);
+      }
+
       // Make an IMG
       return getCanvas().toDataURL();
     },
@@ -441,6 +471,17 @@ var allBannerStyles = [
     },
   },
 ];
+
+function style2_DrawBg(ctx) {
+  ctx.fillStyle = 'rgba(180,0,0,0.9)';
+  ctx.beginPath();
+  ctx.moveTo(12, 240);
+  ctx.lineTo(525, 240);
+  ctx.lineTo(550, 288);
+  ctx.lineTo(12, 288);
+  ctx.closePath();
+  ctx.fill();
+}
 
 function getCanvas() {
   return document.getElementById('drawingCanvas');

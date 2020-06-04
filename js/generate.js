@@ -4,7 +4,7 @@ var mainBlankLoaded = false;
 var moduleBlankLoaded = false;
 var firstTimeLoading = true;
 
-var currentStyle = allBannerStyles[0];
+var currentStyle = allBannerStyles[2];
 
 function init() {
   var form = document.getElementById('my-form');
@@ -55,19 +55,23 @@ function generateBanners() {
   var mainFigure = document.createElement('figure');
   mainFigure.classList.add('image');
   mainFigure.classList.add('box');
+  var mainCaption = document.createElement('figcaption');
+  mainCaption.appendChild(document.createTextNode('Course Banner'));
   var imgElement = new Image();
   imgElement.id = 'mainImageDestination';
   imgElement.src = mainBannerData;
   imgElement.alt = name + ' ' + title;
   imgElement.classList.add('generated');
   var previewZone = document.getElementById('previewZone');
-  mainFigure.appendChild(document.createTextNode('Course Banner'));
+  mainFigure.appendChild(mainCaption);
   mainFigure.appendChild(imgElement);
   previewZone.appendChild(mainFigure);
   for (var moduleNumber = 1; moduleNumber < 16; moduleNumber++) {
     var bannerFigure = document.createElement('figure');
     bannerFigure.classList.add('image');
     bannerFigure.classList.add('box');
+    var bannerCaption = document.createElement('figcaption');
+    bannerCaption.appendChild(document.createTextNode('Module 1 Banner'));
     let newImage = document.createElement('img');
 
     newImage.id = 'module-' + moduleNumber + '-banner';
@@ -77,7 +81,7 @@ function generateBanners() {
       bannerFigure.classList.toggle('is-hidden');
     }
     newImage.src = currentStyle.getModuleBannerData(name, moduleNumber);
-    bannerFigure.appendChild(document.createTextNode('Module Banner'));
+    bannerFigure.appendChild(bannerCaption);
     bannerFigure.appendChild(newImage);
     previewZone.appendChild(bannerFigure);
   }
