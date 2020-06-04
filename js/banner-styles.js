@@ -373,7 +373,7 @@ var allBannerStyles = [
       ctx.fillStyle = 'white';
       ctx.shadowColor = 'black';
       ctx.shadowOffsetX = 1;
-      ctx.shadowOffsetY = 0;
+      ctx.shadowOffsetY = 1;
       ctx.shadowBlur = 2;
       ctx.font = 'bold 48pt Verdana';
       ctx.fillText('module'.toUpperCase() + ' ' + moduleNumber, 100, 115);
