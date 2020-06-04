@@ -217,7 +217,7 @@ var allBannerStyles = [
       return getCanvas().toDataURL();
     },
   },
-  // Style 4
+  // Style 4 red UNLV wave
   {
     mainBlankSrc: 'images/blanks/main-banner-template-05.png',
     moduleBlankSrc: 'images/blanks/template_05-module-banner.png',
@@ -237,8 +237,25 @@ var allBannerStyles = [
       ctx.shadowOffsetX = 0;
       ctx.shadowOffsetY = 0;
       ctx.shadowBlur = 0;
-      ctx.font = '18pt "Roboto"';
-      ctx.fillText(title, 20, 100);
+      ctx.font = '18pt Roboto';
+      // split title if too long
+      if (title.length <= 20) {
+        ctx.fillText(title.toUpperCase(), 20, 110);
+      } else if (title.length > 20 && title.length < 40) {
+        var newTitle = stringDivider(title, 20, '\n').split('\n');
+        ctx.fillText(newTitle[0].trim().toUpperCase(), 20, 110, 240);
+        ctx.fillText(newTitle[1].trim().toUpperCase(), 20, 140, 230);
+      } else {
+        var newTitle = stringDivider(
+          title,
+          Math.floor(title.length / 2),
+          '\n'
+        ).split('\n');
+        ctx.fillStyle = '#666';
+        ctx.fillText(newTitle[0].trim().toUpperCase(), 20, 110, 230);
+        ctx.fillText(newTitle[1].trim().toUpperCase(), 20, 140, 230);
+      }
+
       // Make an IMG
       return getCanvas().toDataURL();
     },
@@ -255,7 +272,7 @@ var allBannerStyles = [
       return getCanvas().toDataURL();
     },
   },
-  // Style 5
+  // Style 5 red circuit board
   {
     mainBlankSrc: 'images/blanks/main-banner-template-06.png',
     moduleBlankSrc: 'images/blanks/template_06-module-banner.png',
@@ -276,7 +293,7 @@ var allBannerStyles = [
       ctx.shadowOffsetY = 0;
       ctx.shadowBlur = 1;
       ctx.font = '30pt "Roboto"';
-      ctx.fillText(title, 60, 285);
+      ctx.fillText(title, 60, 285, 975);
       // Make an IMG
       return getCanvas().toDataURL();
     },
@@ -304,7 +321,7 @@ var allBannerStyles = [
       return getCanvas().toDataURL();
     },
   },
-  // Style 6
+  // Style 6 person studying at library
   {
     mainBlankSrc: 'images/blanks/main-banner-template-07.png',
     moduleBlankSrc: 'images/blanks/template_07-module-banner.png',
@@ -325,7 +342,27 @@ var allBannerStyles = [
       ctx.shadowOffsetY = 1;
       ctx.shadowBlur = 1;
       ctx.font = '20pt "Verdana"';
-      ctx.fillText(title, 20, 165);
+      // split title if too long
+      var lengthToSplit = 24;
+      if (title.length <= lengthToSplit) {
+        ctx.fillText(title.toUpperCase(), 20, 165);
+      } else if (
+        title.length > lengthToSplit &&
+        title.length < lengthToSplit * 2
+      ) {
+        var newTitle = stringDivider(title, lengthToSplit, '\n').split('\n');
+        ctx.fillText(newTitle[0].trim().toUpperCase(), 20, 165, 380);
+        ctx.fillText(newTitle[1].trim().toUpperCase(), 20, 195, 350);
+      } else {
+        var newTitle = stringDivider(
+          title,
+          Math.floor(title.length / 2),
+          '\n'
+        ).split('\n');
+        ctx.fillText(newTitle[0].trim().toUpperCase(), 20, 165, 350);
+        ctx.fillText(newTitle[1].trim().toUpperCase(), 20, 195, 350);
+      }
+
       // Make an IMG
       return getCanvas().toDataURL();
     },
@@ -343,7 +380,7 @@ var allBannerStyles = [
       return getCanvas().toDataURL();
     },
   },
-  // Style 7
+  // Style 7 outside lied library
   {
     mainBlankSrc: 'images/blanks/main-banner-template-08.png',
     moduleBlankSrc: 'images/blanks/template_08-module-banner.png',
@@ -364,7 +401,28 @@ var allBannerStyles = [
       ctx.shadowOffsetY = 0;
       ctx.shadowBlur = 1;
       ctx.font = '24pt "Roboto"';
-      ctx.fillText(title, 20, 170);
+
+      // split title if too long
+      var lengthToSplit = 28;
+      if (title.length <= lengthToSplit) {
+        ctx.fillText(title, 20, 170);
+      } else if (
+        title.length > lengthToSplit &&
+        title.length < lengthToSplit * 2
+      ) {
+        var newTitle = stringDivider(title, lengthToSplit, '\n').split('\n');
+        ctx.fillText(newTitle[0].trim().toUpperCase(), 20, 170, 480);
+        ctx.fillText(newTitle[1].trim().toUpperCase(), 20, 210, 450);
+      } else {
+        var newTitle = stringDivider(
+          title,
+          Math.floor(title.length / 2),
+          '\n'
+        ).split('\n');
+        ctx.fillText(newTitle[0].trim().toUpperCase(), 20, 170, 480);
+        ctx.fillText(newTitle[1].trim().toUpperCase(), 20, 210, 450);
+      }
+
       // Make an IMG
       return getCanvas().toDataURL();
     },
