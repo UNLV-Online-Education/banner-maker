@@ -118,7 +118,7 @@ function enableAndAlertTheDownloadButton() {
   document.getElementById('downloadButton').classList.toggle('is-loading');
 
   window.setTimeout(function () {
-    document.getElementById('previewHeader').scrollIntoView();
+    // document.getElementById('previewHeader').scrollIntoView();
     // document.getElementById('downloadButton').scrollIntoView();
     window.setTimeout(function () {
       var downloadButton = document.getElementById('downloadButton');
