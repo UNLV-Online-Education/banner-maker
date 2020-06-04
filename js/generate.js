@@ -52,22 +52,34 @@ function generateBanners() {
   var title = document.getElementById('courseTitle').value;
 
   var mainBannerData = currentStyle.getMainBannerData(name, title);
+  var mainFigure = document.createElement('figure');
+  mainFigure.classList.add('image');
+  mainFigure.classList.add('box');
   var imgElement = new Image();
   imgElement.id = 'mainImageDestination';
   imgElement.src = mainBannerData;
   imgElement.alt = name + ' ' + title;
   imgElement.classList.add('generated');
   var previewZone = document.getElementById('previewZone');
-  previewZone.appendChild(imgElement);
+  mainFigure.appendChild(document.createTextNode('Course Banner'));
+  mainFigure.appendChild(imgElement);
+  previewZone.appendChild(mainFigure);
   for (var moduleNumber = 1; moduleNumber < 16; moduleNumber++) {
+    var bannerFigure = document.createElement('figure');
+    bannerFigure.classList.add('image');
+    bannerFigure.classList.add('box');
     let newImage = document.createElement('img');
+
     newImage.id = 'module-' + moduleNumber + '-banner';
     newImage.classList.add('generated');
     if (moduleNumber > 1) {
       newImage.classList.toggle('is-hidden');
+      bannerFigure.classList.toggle('is-hidden');
     }
     newImage.src = currentStyle.getModuleBannerData(name, moduleNumber);
-    previewZone.appendChild(newImage);
+    bannerFigure.appendChild(document.createTextNode('Module Banner'));
+    bannerFigure.appendChild(newImage);
+    previewZone.appendChild(bannerFigure);
   }
   donePreviewLoading();
   if (!firstTimeLoading) {
@@ -93,15 +105,11 @@ function chooseStyle(styleIndex) {
 }
 
 function clearOldPreviews() {
-  var mainImage = document.getElementById('mainImageDestination');
-  if (mainImage) {
-    mainImage.parentNode.removeChild(mainImage);
-  }
-  for (var index = 1; index <= 16; index++) {
-    var currentItem = document.getElementById('module-' + index + '-banner');
-    if (currentItem) {
-      currentItem.parentElement.removeChild(currentItem);
-    }
+  var allFigures = document
+    .getElementById('previewZone')
+    .getElementsByTagName('figure');
+  for (var i = allFigures.length - 1; i >= 0; i--) {
+    allFigures[i].parentNode.removeChild(allFigures[i]);
   }
 }
 
